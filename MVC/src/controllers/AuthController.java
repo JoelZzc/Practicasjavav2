@@ -19,7 +19,6 @@ public class AuthController {
  	
  	
  	public void register() {
- 		
  		view.register();
  	}
 }

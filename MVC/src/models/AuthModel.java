@@ -5,7 +5,7 @@ public class AuthModel {
 	
 	public AuthModel() {
 	 		
-	 	}
+	}
  	
  	public boolean access(String u, String p){
  		
@@ -22,6 +22,10 @@ public class AuthModel {
  			return false; 
  		}
  		 
+ 	}
+ 	
+ 	public String registro(String user){
+ 		return user;
  	}
 
 }

@@ -8,6 +8,7 @@ public class Main {
 		
 		
 		AuthController application = new AuthController();
+		//application.register();
  		application.login();
 	}
 
