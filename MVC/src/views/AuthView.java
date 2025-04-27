@@ -133,9 +133,10 @@ public class AuthView {
 					
 					if(user_auth){
 							JOptionPane.showMessageDialog(frame, "Bienvenido");
+							frame.dispose();
+							home();
 						}else {
-							JOptionPane.showMessageDialog(frame, "Error");
-
+							JOptionPane.showMessageDialog(frame, "Usuario o contraseña incorrecto","Error",JOptionPane.ERROR_MESSAGE);
 						}
 				}
 				
@@ -193,14 +194,24 @@ public class AuthView {
 		username.setBounds(230, 100, 230,25);
 		panelRegistro.add(username);
 		
-		JLabel bio = new JLabel("BIO ");
-		bio.setSize(180,25);
-		bio.setLocation(30,160);
-		bio.setFont(new Font("Arial",Font.BOLD,15));
-		panelRegistro.add(bio);
+		JLabel mail = new JLabel("Correo: ");
+		mail.setSize(180,25);
+		mail.setLocation(30,140);
+		mail.setFont(new Font("Arial",Font.BOLD,15));
+		panelRegistro.add(mail);
+		
+		JTextField mailtext = new JTextField();
+		mailtext.setBounds(230, 140, 230,25);
+		panelRegistro.add(mailtext);
+		
+		JLabel password = new JLabel("Contraseña: ");
+		password.setSize(180,25);
+		password.setLocation(30,180);
+		password.setFont(new Font("Arial",Font.BOLD,15));
+		panelRegistro.add(password);
 		
 		JTextField bio2 = new JTextField();
-		bio2.setBounds(230, 140, 230,50);
+		bio2.setBounds(230, 180, 230,25);
 		panelRegistro.add(bio2);
 		
 		JLabel preferencias = new JLabel("Preferencias");
@@ -260,8 +271,6 @@ public class AuthView {
 			
 			
 			
-			
-			
 		});
 		crearCuenta.addActionListener(new ActionListener() {
 			@Override
@@ -305,5 +314,14 @@ public class AuthView {
 
  	}
 	
-
+ 	public void home() {
+ 		frame = new JFrame();
+ 		frame.setBounds(100, 100, 500, 500);
+ 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 		frame.setVisible(true);
+		JPanel panelLogin= new JPanel();
+		frame.getContentPane().add(panelLogin, BorderLayout.CENTER);		
+		panelLogin.setBackground(new Color(128,0,128));
+		panelLogin.setLayout(null);
+ 	}
 }

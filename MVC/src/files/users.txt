@@ -1,0 +1,5 @@
+Jonathan Soto,jsoto@uabcs.mx,superpassword123,admin
+Roberto Fernandez,fer@uabcs.mx,passs4312,student
+Joel Carrillo,jz@uabcs.mx,123222,student
+Diego Bueno,dg@uabcs.mx,6542,student
+Joel Zazueta,joel12@gmail.com,1234,student

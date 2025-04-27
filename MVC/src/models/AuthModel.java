@@ -1,5 +1,8 @@
 package models;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 public class AuthModel {
 	
 	
@@ -8,24 +11,33 @@ public class AuthModel {
 	}
  	
  	public boolean access(String u, String p){
- 		
- 		if(u.equals("joel12@gmail.com") ) {
- 			if(p.equals("1234")) {
- 				
- 				return true; 
- 				
- 			}else {
- 				return false;
- 				
- 			}
- 		}else {
- 			return false; 
+		String url = AuthModel.class.getResource("/files/users.txt").getPath();
+ 		try (BufferedReader bf = new BufferedReader(new FileReader(url))){ 
+ 			// convertir el row en String 
+ 			String row;
+             while ((row = bf.readLine()) != null) {
+                 // el string cortarlo con Split 
+            	 String[] split = row.split(",");
+                 System.out.print(row);
+                 // comparar con el arreglo en la pos 1,2
+                 if (split[1].equals(u) && split[2].equals(p)) {
+                     return true;
+                 }
+             }
+             return false;
+ 		} catch (Exception e) {
+ 			
+ 			e.printStackTrace();
+ 			System.out.println("error"); 
  		}
- 		 
+
+ 		return false;
  	}
  	
- 	public String registro(String user){
- 		return user;
+ 	
+ 	
+ 	public String registro(String u){
+ 		return u;
  	}
 
 }
