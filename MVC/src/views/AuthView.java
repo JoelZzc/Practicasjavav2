@@ -21,6 +21,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import controllers.HomeController;
 import models.AuthModel;
 
 public class AuthView {
@@ -135,7 +136,9 @@ public class AuthView {
 					if(user_auth){
 							JOptionPane.showMessageDialog(frame, "Bienvenido");
 							frame.dispose();
-							home();
+							
+							HomeController hc = new HomeController();
+							hc.home();
 						}else {
 							JOptionPane.showMessageDialog(frame, "Usuario o contraseña incorrecto","Error",JOptionPane.ERROR_MESSAGE);
 						}
@@ -375,7 +378,8 @@ public class AuthView {
 						e1.printStackTrace();
 					} 
 					JOptionPane.showMessageDialog(frame2, "Registro exitoso");
-					home();
+					HomeController hc = new HomeController();
+					hc.home();
 					frame2.dispose();
 					
 				}else {
@@ -404,14 +408,5 @@ public class AuthView {
 
  	}
 	
- 	public void home() {
- 		frame = new JFrame();
- 		frame.setBounds(100, 100, 500, 500);
- 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
- 		frame.setVisible(true);
-		JPanel panelLogin= new JPanel();
-		frame.getContentPane().add(panelLogin, BorderLayout.CENTER);		
-		panelLogin.setBackground(new Color(128,0,128));
-		panelLogin.setLayout(null);
- 	}
+ 	
 }

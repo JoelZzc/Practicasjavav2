@@ -3,3 +3,5 @@ Roberto Fernandez,fer@uabcs.mx,passs4312,student
 Joel Carrillo,jz@uabcs.mx,123222,student
 Diego Bueno,dg@uabcs.mx,6542,student
 Joel Zazueta,joel12@gmail.com,1234
+a|d|f|v|h|j@k.com|n|n
+a|s|sa|as|s|as@as.com|as|as
