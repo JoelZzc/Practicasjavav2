@@ -1,0 +1,136 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Laptop HP",
+      "precio": 780.50,
+      "stock": 15
+    },
+    {
+      "id": 2,
+      "nombre": "Mouse Logitech",
+      "precio": 25.99,
+      "stock": 50
+    },
+    {
+      "id": 1,
+      "nombre": "Essence Mascara Lash Princess",
+      "precio": 9.99,
+      "stock": 99
+    },
+    {
+      "id": 2,
+      "nombre": "Eyeshadow Palette with Mirror",
+      "precio": 19.99,
+      "stock": 34
+    },
+    {
+      "id": 3,
+      "nombre": "Powder Canister",
+      "precio": 14.99,
+      "stock": 89
+    },
+    {
+      "id": 4,
+      "nombre": "Red Lipstick",
+      "precio": 12.99,
+      "stock": 91
+    },
+    {
+      "id": 5,
+      "nombre": "Hydrating Facial Cream",
+      "precio": 24.99,
+      "stock": 120
+    },
+    {
+      "id": 6,
+      "nombre": "Matte Finish Foundation",
+      "precio": 29.99,
+      "stock": 80
+    },
+    {
+      "id": 7,
+      "nombre": "Waterproof Eyeliner",
+      "precio": 15.99,
+      "stock": 150
+    },
+    {
+      "id": 8,
+      "nombre": "Volumizing Hair Spray",
+      "precio": 18.99,
+      "stock": 60
+    },
+    {
+      "id": 9,
+      "nombre": "Nail Polish Set",
+      "precio": 22.99,
+      "stock": 200
+    },
+    {
+      "id": 10,
+      "nombre": "Aloe Vera Face Mask",
+      "precio": 10.99,
+      "stock": 95
+    },
+    {
+      "id": 11,
+      "nombre": "Organic Lip Balm",
+      "precio": 5.99,
+      "stock": 300
+    },
+    {
+      "id": 12,
+      "nombre": "Coconut Body Lotion",
+      "precio": 14.99,
+      "stock": 110
+    },
+    {
+      "id": 13,
+      "nombre": "Charcoal Face Scrub",
+      "precio": 16.99,
+      "stock": 70
+    },
+    {
+      "id": 14,
+      "nombre": "Rose Water Toner",
+      "precio": 12.99,
+      "stock": 85
+    },
+    {
+      "id": 15,
+      "nombre": "Brightening Eye Cream",
+      "precio": 19.99,
+      "stock": 65
+    },
+    {
+      "id": 16,
+      "nombre": "Shea Butter Hand Cream",
+      "precio": 9.99,
+      "stock": 140
+    },
+    {
+      "id": 17,
+      "nombre": "Exfoliating Body Scrub",
+      "precio": 17.99,
+      "stock": 75
+    },
+    {
+      "id": 18,
+      "nombre": "Anti-Aging Serum",
+      "precio": 34.99,
+      "stock": 50
+    },
+    {
+      "id": 19,
+      "nombre": "SPF 50 Sunscreen Lotion",
+      "precio": 21.99,
+      "stock": 130
+    },
+    {
+      "id": 20,
+      "nombre": "Vitamin C Face Serum",
+      "precio": 27.99,
+      "stock": 90
+    }
+  ]
+}

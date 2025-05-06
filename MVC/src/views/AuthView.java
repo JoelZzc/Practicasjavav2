@@ -37,9 +37,6 @@ public class AuthView {
  	}
  	
  	public void login() {
- 		
- 		System.out.println("Hola");
- 		
  		frame = new JFrame();
  		frame.setBounds(100, 100, 500, 500);
  		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

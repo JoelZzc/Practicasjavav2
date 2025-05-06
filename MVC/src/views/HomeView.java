@@ -13,13 +13,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import models.AuthModel;
+
+import controllers.HomeController;
+import controllers.ProductController;
+import models.HomeModel;
 
 public class HomeView {
 	private JFrame frame;
- 	private AuthModel functions;
+ 	private HomeModel functions;
 	public HomeView() {
- 		functions = new AuthModel();
+ 		functions = new HomeModel();
 	}
 	
 	public void home() {
@@ -31,8 +34,8 @@ public class HomeView {
 		frame.getContentPane().add(panelHome, BorderLayout.CENTER);		
 		panelHome.setBorder(new EmptyBorder(5, 5, 5, 5));
 		panelHome.setLayout(new BorderLayout(0, 0));
-		
 		JPanel panel = new JPanel();
+		
 		panelHome.add(panel, BorderLayout.NORTH);
 		
 		JLabel lblNewLabel = new JLabel("HOMEVIEW");
@@ -70,6 +73,19 @@ public class HomeView {
 			
 		});
 		panel_1.add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("Productos");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(frame, "Bienvenido a productos");
+				frame.dispose();
+				ProductController pc = new ProductController();
+				pc.products();
+			}
+			
+		});
+		panel_1.add(btnNewButton_3);
 		
 		JPanel panel_2 = new JPanel();
 		panelHome.add(panel_2, BorderLayout.CENTER);
