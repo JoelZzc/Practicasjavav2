@@ -2,6 +2,9 @@ package controllers;
 
 import java.util.List;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import models.ProductModel;
 import models.Producto;
 import views.ProductView;
@@ -26,5 +29,9 @@ public class ProductController {
             data[i][3] = p.getStock();
         }
         view.products(data);
+	}
+	
+	public void add() {
+		view.add();
 	}
 }
