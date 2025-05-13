@@ -53,10 +53,10 @@ public class ProductModel {
          return productos;
  	}
 	public boolean addProduct(int id, String nombre, double precio, int stock) {
-        JSONParser parser = new JSONParser();
+        JSONParser jsonParser = new JSONParser();
  		String url = "src\\files\\productos.json";
         try (FileReader reader = new FileReader(url)) {
-            JSONObject jsonObject = (JSONObject) parser.parse(reader);
+            JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
             JSONArray productosArray = (JSONArray) jsonObject.get("productos");
 
             JSONObject producto = new JSONObject();
@@ -79,4 +79,35 @@ public class ProductModel {
 
         return false;
     }
+	
+	public boolean remove(int id) {
+		JSONParser jsonParser = new JSONParser();
+	    String url = "src\\files\\productos.json";
+
+	    try (FileReader reader = new FileReader(url)) {
+	        JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
+	        JSONArray productosArray = (JSONArray) jsonObject.get("productos");
+
+	        for (int i = 0; i < productosArray.size(); i++) {
+	            JSONObject producto = (JSONObject) productosArray.get(i);
+	            long productoId = (long) producto.get("id");
+
+	            if (productoId == id) {
+	                productosArray.remove(i);
+	                break;
+	            }
+	        }
+
+	        try (FileWriter file = new FileWriter(url)) {
+	            file.write(jsonObject.toJSONString());
+	            file.flush();
+	            return true;
+	        }
+
+	    } catch (IOException | ParseException e) {
+	        e.printStackTrace();
+	    }
+
+	    return false;
+	}
 }

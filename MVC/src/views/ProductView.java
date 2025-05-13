@@ -2,12 +2,15 @@ package views;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,6 +19,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -31,7 +36,7 @@ public class ProductView {
 		
 	}
 	
-	public void products(Object[][] data) {
+	public void products() {
  		
  		frame = new JFrame();
  		frame.setBounds(100, 100, 920, 534);
@@ -77,20 +82,37 @@ public class ProductView {
 		});
 		panel_2.add(btnNewButton);
  		
- 		String[] columnNames= {
-				"ID",
-				"Nombre",
-				"Precio",
-				"Stock",
+		String[] columnNames = {
+						"ID", 
+						"Nombre", 
+						"Precio", 
+						"Stock", 
+						"Acción"
 		};
- 		
- 		JTable table = new JTable(data,columnNames);
+		
+		
+		DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+		ProductModel pm = new ProductModel();
+		List<Producto> listaProductos = pm.get();
+
+		for (Producto p : listaProductos) {
+		    model.addRow(new Object[]{p.getID(), p.getNombre(), p.getPrecio(), p.getStock(), "Eliminar"});
+		}
+
+		JTable table = new JTable(model) {
+		    public boolean isCellEditable(int row, int column) {
+		        return column == 4;
+		    }
+		};
+		
+		table.getColumn("Acción").setCellRenderer(new ButtonRenderer());
+		table.getColumn("Acción").setCellEditor(new ButtonEditor(new JCheckBox(), table, pm));
+		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(50, 10, 800,400);
 		panel.add(scrollPane);
 		panel.revalidate();
- 		
- 	}
+	}
 	
 	public void add() {
 		frame = new JFrame();
@@ -185,8 +207,54 @@ public class ProductView {
 			}});
 		panel_2.add(add);
 		
-		JButton btnNewButton_1 = new JButton("Cancelar");
-		btnNewButton_1.setFont(new Font("Arial", Font.PLAIN, 16));
-		panel_2.add(btnNewButton_1);
+		JButton cancel = new JButton("Cancelar");
+		cancel.setFont(new Font("Arial", Font.PLAIN, 16));
+		cancel.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				ProductController pc = new ProductController();
+				pc.products();
+				
+			}
+		});
+		panel_2.add(cancel);
+	}
+	
+	class ButtonRenderer extends JButton implements TableCellRenderer {
+	    public ButtonRenderer() {
+	        setText("Eliminar");
+	    }
+
+	    public Component getTableCellRendererComponent(JTable table, Object value,
+	        boolean isSelected, boolean hasFocus, int row, int column) {
+	        return this;
+	    }
+	}
+
+	class ButtonEditor extends DefaultCellEditor {
+	    private JButton button;
+	    private JTable table;
+	    private ProductModel model;
+
+	    public ButtonEditor(JCheckBox checkBox, JTable table, ProductModel model) {
+	        super(checkBox);
+	        this.table = table;
+	        this.model = model;
+	        this.button = new JButton("Eliminar");
+
+	        button.addActionListener(e -> {
+	            int row = table.getSelectedRow();
+	            int id = (int) table.getValueAt(row, 0);
+	            model.remove(id);
+	            ((DefaultTableModel) table.getModel()).removeRow(row);
+	        });
+	    }
+
+	    public Component getTableCellEditorComponent(JTable table, Object value,
+	        boolean isSelected, int row, int column) {
+	        return button;
+	    }
 	}
 }
