@@ -16,6 +16,7 @@ import javax.swing.border.LineBorder;
 
 import controllers.HomeController;
 import controllers.ProductController;
+import controllers.UserController;
 import models.HomeModel;
 
 public class HomeView {
@@ -44,15 +45,18 @@ public class HomeView {
 		JPanel panel_1 = new JPanel();
 		panelHome.add(panel_1, BorderLayout.SOUTH);
 		
-		JButton btnNewButton = new JButton("Usuarios");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnUsuario = new JButton("Usuarios");
+		btnUsuario.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(frame, "Bienvenido a usuario");
+			public void actionPerformed(ActionEvent e) {	
+				frame.dispose();
+				UserController uc = new UserController();
+				uc.users();
+				
 			}
 			
 		});
-		panel_1.add(btnNewButton);
+		panel_1.add(btnUsuario);
 		
 		JButton btnNewButton_1 = new JButton("Registro");
 		btnNewButton_1.addActionListener(new ActionListener() {
