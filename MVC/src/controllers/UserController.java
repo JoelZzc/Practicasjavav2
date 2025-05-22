@@ -15,5 +15,10 @@ public class UserController {
 		UserModel um = new UserModel();
 		view.user(um.get());
 	}
+	
+	public void add() {
+		
+		view.showFormAdd();
+	}
 
 }

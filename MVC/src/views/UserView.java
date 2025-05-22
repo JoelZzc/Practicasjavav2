@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,6 +25,7 @@ import controllers.UserController;
 import models.ProductModel;
 import models.Producto;
 import models.User;
+import models.UserModel;
 import views.ProductView.ButtonEditor;
 import views.ProductView.ButtonRenderer;
 
@@ -56,7 +58,7 @@ public class UserView {
 		panel_1.setBackground(Color.decode("#F0DD01"));
 		panelUsers.add(panel_1, BorderLayout.NORTH);
 		
-		JLabel lblNewLabel = new JLabel("PRODUCTOS");
+		JLabel lblNewLabel = new JLabel("USUARIOS");
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 20));
 		panel_1.add(lblNewLabel);
 		
@@ -79,6 +81,22 @@ public class UserView {
 			
 		});
 		panel_2.add(btnNewButton);
+		
+		JButton btnAdd = new JButton("Añadir");
+		btnAdd.setFont(new Font("Arial", Font.PLAIN, 16));
+		btnAdd.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				frame.dispose();
+				UserController uc = new UserController();
+				uc.add();
+				
+			}
+			
+		});
+		panel_2.add(btnAdd);
  		
 		String[] columnNames = {
 				"ID", 
@@ -103,6 +121,112 @@ public class UserView {
 		JScrollPane scrollPane = new JScrollPane(table);
 		panelUsers.add(scrollPane, BorderLayout.CENTER);
 		panel.revalidate();
+	}
+	
+	public void showFormAdd() {
+		frame = new JFrame();
+ 		frame.setBounds(100, 100, 920, 534);
+ 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 		frame.setVisible(true);
+ 		
+ 		JPanel panelUser = new JPanel();
+ 		panelUser.setBackground(new Color(255, 255, 255));
+ 		frame.getContentPane().add(panelUser, BorderLayout.CENTER);
+ 		panelUser.setBorder(new EmptyBorder(5, 5, 5, 5));
+ 		panelUser.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = new JPanel();
+		panelUser.add(panel, BorderLayout.CENTER);
+		panel.setBackground(Color.decode("#705AAD"));
+		panel.setLayout(null);
+		
+		JLabel idTag = new JLabel("id");
+		idTag.setFont(new Font("Arial", Font.PLAIN, 14));
+		idTag.setBounds(50,50,200,30);
+		panel.add(idTag);
+		
+		JTextField idInput = new JTextField();
+		idInput.setFont(new Font("Arial", Font.PLAIN, 12));
+		idInput.setBounds(50,90, 200, 30);
+		panel.add(idInput);
+		
+		JLabel nameTag = new JLabel("Nombre");
+		nameTag.setFont(new Font("Arial", Font.PLAIN, 14));
+		nameTag.setBounds(50,130,200,30);
+		panel.add(nameTag);
+		
+		JTextField nameInput = new JTextField();
+		nameInput.setFont(new Font("Arial", Font.PLAIN, 12));
+		nameInput.setBounds(50,170, 200, 30);
+		panel.add(nameInput);
+		
+		JLabel emailTag = new JLabel("Email");
+		emailTag.setFont(new Font("Arial", Font.PLAIN, 14));
+		emailTag.setBounds(50,210,200,30);
+		panel.add(emailTag);
+		
+		JTextField emailInput = new JTextField();
+		emailInput.setFont(new Font("Arial", Font.PLAIN, 12));
+		emailInput.setBounds(50,250, 200, 30);
+		panel.add(emailInput);
+		
+		JLabel rolTag = new JLabel("Rol");
+		rolTag.setFont(new Font("Arial", Font.PLAIN, 14));
+		rolTag.setBounds(50,290,200,30);
+		panel.add(rolTag);
+		
+		JTextField rolInput = new JTextField();
+		rolInput.setFont(new Font("Arial", Font.PLAIN, 12));
+		rolInput.setBounds(50,330, 200, 30);
+		panel.add(rolInput);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.decode("#F0DD01"));
+		panelUser.add(panel_1, BorderLayout.NORTH);
+		
+		JLabel lblNewLabel = new JLabel("AÑADIR USUARIO");
+		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+		panel_1.add(lblNewLabel);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.decode("#705AAD"));
+		panelUser.add(panel_2, BorderLayout.SOUTH);
+		
+		JButton save = new JButton("Guardar");
+		save.setFont(new Font("Arial", Font.PLAIN, 16));
+		save.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				int id = Integer.parseInt(idInput.getText()); 
+				String name = nameInput.getText();
+				String email = emailInput.getText(); 
+				String rol = rolInput.getText(); 
+
+				UserModel um = new UserModel();
+				um.create(id,name,email,rol);
+				frame.dispose();
+				
+				UserController uc = new UserController();
+				uc.users();
+				
+			}});
+		panel_2.add(save);
+		
+		JButton cancel = new JButton("Cancelar");
+		cancel.setFont(new Font("Arial", Font.PLAIN, 16));
+		cancel.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				UserController uc = new UserController();
+				uc.users();
+				
+			}
+		});
+		panel_2.add(cancel);
 	}
 
 }
