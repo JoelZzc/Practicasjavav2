@@ -1,5 +1,6 @@
 package controllers;
 
+import models.User;
 import models.UserModel;
 import views.UserView;
 
@@ -19,6 +20,10 @@ public class UserController {
 	public void add() {
 		
 		view.showFormAdd();
+	}
+	
+	public void update(User userToUpdate) {
+		view.showFormUpdate(userToUpdate);
 	}
 
 }
